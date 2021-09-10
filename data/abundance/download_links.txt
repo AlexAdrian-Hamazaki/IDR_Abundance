@@ -1,0 +1,3 @@
+full uniprot2 paxdb: https://pax-db.org/download
+paxdb abundances human: https://pax-db.org/dataset/9606/29/
+paxdb abundances yeast: https://pax-db.org/dataset/4932/3/
