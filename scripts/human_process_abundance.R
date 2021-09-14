@@ -5,43 +5,47 @@ library(dplyr)
 # Purpose:
 # Add the protein symbols to the abundance tables from paxDB for human
 
-# Full uniprot 2 paxdb  mappings downloaded from
-#https://pax-db.org/download (its the Uniprot mappings one)
-
-
-# From full_uniprot_2_paxdb.tsv:
-# Human proteins isolated with : grep -nhr "HUMAN" full* > human_mappings.txt
-
+#See data/abundance/download_links.txt for the URLs of where the abundance and mapping data was downloaded from
 
 # human mapping
 # Reading in abundance and mapping data frames
 hum_abun <- read.delim(file = "data/abundance/paxdb_abundances_integrated_whole_human.tsv",
                        sep = "\t",
                        header = TRUE)
-hum_mappings <- read.delim(file = "data/abundance/human_mappings.txt",
-                       header = FALSE)
-colnames(hum_mappings) <- c("1", "symbol", "string_external_id", "4", '5')
+hum_mappings <- read.delim(file = "data/abundance/9606.protein.info.v11.5.txt",
+                       header = TRUE)
+hum_mappings <- rename(hum_mappings, "string_external_id" = "X.string_protein_id")
+hum_mappings <- rename(hum_mappings, "symbol" = "preferred_name")
 
-hum_abun$string_external_id <- str_extract(hum_abun$string_external_id, pattern = "(?<=\\.).*")
+
+expected_complete <- sum(hum_abun$string_external_id %in% hum_mappings$string_external_id)
+print(paste(expected_complete, 'proteins with abundance scores are expected to have protein symbols"'))
+
 
 #merge hum_mappings onto hum_abun because hum_abun is larger
-hum_merged <- left_join(hum_abun, hum_mappings, by = "string_external_id", keep = FALSE, copy = FALSE)
+hum_merged <- left_join(hum_abun, hum_mappings, by = "string_external_id", keep = FALSE)
 
 #there's lots of duplicates, and there's lots of "proteins" in hum_abun that didn't map to anything
 
 hum_with_symbol <- filter(hum_merged, !is.na(symbol))
+hum_without_symbol <- filter(hum_merged, is.na(symbol))
+print(paste(nrow(hum_without_symbol), "proteins with abundance scores do not have symbols"))
+print(paste(nrow(hum_with_symbol), "proteins with abundance scores have symbols"))
 
-print(paste(nrow(hum_with_symbol), "proteins have abundance scores"))
+# Hard to tell why there arn't symbols for a lot of the proteins with abundance - But I guess we just don't have abundance data for
+# all human genes
 
-sum(duplicated(hum_with_symbol))
+########## Looking at duplicates
+# sum(duplicated(hum_with_symbol$symbol))
+# unique(hum_with_symbol$symbol)
+# hum_with_symbol[(hum_with_symbol$symbol),]
+#There are no duplicate symbols,but there are "NA's" that are duplicated
+
 
 # Remove weird stuff before and after the protein symbol
-hum_with_symbol <- select(hum_with_symbol, c(symbol, abundance))
-symbol <- str_split(hum_with_symbol$symbol, pattern = "\\|")
-symbol <- lapply(symbol, function(x) str_extract(x, pattern = ".*(?=_)"))
-symbol <- lapply(symbol, function(x) return(x[2]))
-hum_with_symbol$symbol <- unlist(symbol)
+hum_with_symbol <- select(hum_with_symbol, c(symbol, abundance, protein_size))
 
+#Save
 write.table(x = hum_with_symbol,
             file = "data/abundance/hum_with_symbol.tsv",
             sep = "\t",
