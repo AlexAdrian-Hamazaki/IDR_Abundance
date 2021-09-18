@@ -1,20 +1,18 @@
-<mxfile host="app.diagrams.net" modified="2021-09-17T21:40:17.544Z" agent="5.0 (X11)" etag="C3En5mA5aP79lwbqCdJ7" version="15.2.9" type="github">
+<mxfile host="app.diagrams.net" modified="2021-09-18T00:05:08.103Z" agent="5.0 (X11)" etag="S1ntvCfAo6rk1gnPmfbV" version="15.2.9" type="github">
   <diagram id="FmImgYfQ0Td1UyCWVp3n" name="Page-1">
     <mxGraphModel dx="1422" dy="820" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="icuXwcs0BqdQZPv1DM7C-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="icuXwcs0BqdQZPv1DM7C-1" target="icuXwcs0BqdQZPv1DM7C-7">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="icuXwcs0BqdQZPv1DM7C-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" target="icuXwcs0BqdQZPv1DM7C-7">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="185" y="120" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="icuXwcs0BqdQZPv1DM7C-1" value="Proteome from uniprot" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="80" y="50" width="210" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="icuXwcs0BqdQZPv1DM7C-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="icuXwcs0BqdQZPv1DM7C-2" target="icuXwcs0BqdQZPv1DM7C-3">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="icuXwcs0BqdQZPv1DM7C-2" value="&lt;div&gt;Abundance info from paxdb&lt;/div&gt;&lt;div&gt;Only has string db protein codes&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="340" y="50" width="210" height="70" as="geometry" />
+        <mxCell id="icuXwcs0BqdQZPv1DM7C-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" target="icuXwcs0BqdQZPv1DM7C-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="445" y="120" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="icuXwcs0BqdQZPv1DM7C-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="icuXwcs0BqdQZPv1DM7C-3" target="icuXwcs0BqdQZPv1DM7C-5">
           <mxGeometry relative="1" as="geometry" />
@@ -28,29 +26,22 @@
         <mxCell id="icuXwcs0BqdQZPv1DM7C-5" value="Contains A lot of protein alises affiliated with a string db protein code" style="ellipse;whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="585" y="205" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="icuXwcs0BqdQZPv1DM7C-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="icuXwcs0BqdQZPv1DM7C-7" target="icuXwcs0BqdQZPv1DM7C-12">
+        <mxCell id="icuXwcs0BqdQZPv1DM7C-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="icuXwcs0BqdQZPv1DM7C-7" target="icuXwcs0BqdQZPv1DM7C-34">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="icuXwcs0BqdQZPv1DM7C-7" value="Grep through alises, and assosiate each string db id with identified string pc codes and uniprot pc codes" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="240" y="330" width="155" height="85" as="geometry" />
         </mxCell>
-        <mxCell id="icuXwcs0BqdQZPv1DM7C-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="icuXwcs0BqdQZPv1DM7C-12" target="icuXwcs0BqdQZPv1DM7C-14">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="icuXwcs0BqdQZPv1DM7C-12" value="You now have a DB containing string db id, uniprot db ID, uniprot pc code, string pc code, and sequence, and ABUNDANCE" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="241.25" y="509" width="152.5" height="82.5" as="geometry" />
-        </mxCell>
-        <mxCell id="icuXwcs0BqdQZPv1DM7C-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="icuXwcs0BqdQZPv1DM7C-14" target="icuXwcs0BqdQZPv1DM7C-16">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="icuXwcs0BqdQZPv1DM7C-14" value="Retrieve disopred and iupred scores. They use uniprot db ids" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="257.5" y="682.75" width="120" height="60" as="geometry" />
+        <mxCell id="icuXwcs0BqdQZPv1DM7C-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" target="icuXwcs0BqdQZPv1DM7C-16">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="317.5" y="742.75" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="icuXwcs0BqdQZPv1DM7C-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="icuXwcs0BqdQZPv1DM7C-16" target="icuXwcs0BqdQZPv1DM7C-18">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="icuXwcs0BqdQZPv1DM7C-16" value="Merge disorder scores onto the table via uniprot db Ids" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="257.5" y="822.75" width="120" height="60" as="geometry" />
+          <mxGeometry x="257.51" y="680" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="icuXwcs0BqdQZPv1DM7C-31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="icuXwcs0BqdQZPv1DM7C-18" target="icuXwcs0BqdQZPv1DM7C-30">
           <mxGeometry relative="1" as="geometry" />
@@ -58,17 +49,20 @@
         <mxCell id="icuXwcs0BqdQZPv1DM7C-18" value="Merge happloinsufficinency data via if the protein symbol is either the string pc or uniprot pc " style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="253.75" y="962.75" width="127.5" height="77.25" as="geometry" />
         </mxCell>
-        <mxCell id="icuXwcs0BqdQZPv1DM7C-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="icuXwcs0BqdQZPv1DM7C-20" target="icuXwcs0BqdQZPv1DM7C-21">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="icuXwcs0BqdQZPv1DM7C-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" target="icuXwcs0BqdQZPv1DM7C-21">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="730" y="850" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="icuXwcs0BqdQZPv1DM7C-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="icuXwcs0BqdQZPv1DM7C-20" target="icuXwcs0BqdQZPv1DM7C-23">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="icuXwcs0BqdQZPv1DM7C-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" target="icuXwcs0BqdQZPv1DM7C-23">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="730" y="910" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="icuXwcs0BqdQZPv1DM7C-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="icuXwcs0BqdQZPv1DM7C-20" target="icuXwcs0BqdQZPv1DM7C-18">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="icuXwcs0BqdQZPv1DM7C-20" value="&lt;div&gt;Clinigen haploinsufficiency database &lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="670" y="850" width="120" height="60" as="geometry" />
+        <mxCell id="icuXwcs0BqdQZPv1DM7C-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="icuXwcs0BqdQZPv1DM7C-18">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="670" y="880" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="icuXwcs0BqdQZPv1DM7C-21" value="Only has human genes. Only has Gene Symbols (not sure if they are uniprot or stringdb)" style="ellipse;whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="630" y="670" width="160" height="100" as="geometry" />
@@ -93,6 +87,37 @@
         </mxCell>
         <mxCell id="icuXwcs0BqdQZPv1DM7C-32" value="ANALYSIS" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="257.495" y="1360.0000000000002" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="icuXwcs0BqdQZPv1DM7C-36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="icuXwcs0BqdQZPv1DM7C-34">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="425" y="490.0999999999999" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="icuXwcs0BqdQZPv1DM7C-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="icuXwcs0BqdQZPv1DM7C-34">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="317.51" y="682.75" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="icuXwcs0BqdQZPv1DM7C-34" value="Merge our linker table with our abundance table string id" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="257.51" y="460" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="icuXwcs0BqdQZPv1DM7C-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="icuXwcs0BqdQZPv1DM7C-38" target="icuXwcs0BqdQZPv1DM7C-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="icuXwcs0BqdQZPv1DM7C-38" value="Retrieve disopred and iupred scores. They use uniprot db ids" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="441.25" y="600" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="icuXwcs0BqdQZPv1DM7C-41" value="You now have a DB containing string db id, uniprot db ID, uniprot pc code, string pc code, and sequence, and ABUNDANCE" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="450" width="210" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="icuXwcs0BqdQZPv1DM7C-42" value="&lt;div&gt;Abundance info from paxdb&lt;/div&gt;&lt;div&gt;Only has string db protein codes&lt;br&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="355" width="180" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="icuXwcs0BqdQZPv1DM7C-43" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Proteome from uniprot&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="73.75" y="60" width="180" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="icuXwcs0BqdQZPv1DM7C-44" value="Clinigen haploinsufficiency database " style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="840" width="110" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
