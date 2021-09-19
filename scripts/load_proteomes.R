@@ -16,7 +16,11 @@ sep_name <- function(fasta_rowname) {
   clean_name <- str_extract(rough_name, pattern = ".*(?=_)")
   return(clean_name)
 }
-
+sep_uniprot <- function(fasta_rowname) {
+  my_split <- str_split(fasta_rowname, pattern = "\\|")
+  rough_name <- my_split[[1]][2]
+  return(rough_name)
+}
 get_seq <- function(fasta_file) {
 
   l_sequence <- list()
@@ -30,36 +34,33 @@ get_seq <- function(fasta_file) {
 
 # Transfer Yeast Fasta into a data frame
 message("Doing Yeast Proteome")
-df_yeast_proteome <- data.frame(matrix(NA, nrow = length(yeast_proteome), ncol = 3))
-colnames(df_yeast_proteome) <- c('name', 'seq', 'length')
+df_yeast_proteome <- data.frame(matrix(NA, nrow = length(yeast_proteome), ncol = 4))
+colnames(df_yeast_proteome) <- c('symbol', 'seq', 'length','uniprot_id')
 
 gene_names <- lapply(names(yeast_proteome), sep_name)
+gene_uniprot <- lapply(names(yeast_proteome), sep_uniprot)
 sequences <-  get_seq(yeast_proteome)
 widths <- width(yeast_proteome)
 
-df_yeast_proteome$name <- unlist(gene_names)
+df_yeast_proteome$symbol <- unlist(gene_names)
 df_yeast_proteome$seq <- unlist(sequences)
 df_yeast_proteome$length <- unlist(widths)
+df_yeast_proteome$uniprot_id <- unlist(gene_uniprot)
 
 # Transfer Human Fasta into a data frame
 message("Doing Human Proteome")
-df_human_proteome <- data.frame(matrix(NA, nrow = length(human_proteome), ncol = 3))
-colnames(df_human_proteome) <- c('name', 'seq', 'length')
+df_human_proteome <- data.frame(matrix(NA, nrow = length(human_proteome), ncol = 4))
+colnames(df_human_proteome) <- c('symbol','length','uniprot_id', 'seq')
 
 hum_gene_names <- lapply(names(human_proteome), sep_name)
+hum_gene_uniprot <- lapply(names(human_proteome), sep_uniprot)
 hum_sequences <-  get_seq(human_proteome)
 hum_widths <- width(human_proteome)
 
-df_human_proteome$name <- unlist(hum_gene_names)
+df_human_proteome$symbol <- unlist(hum_gene_names)
 df_human_proteome$seq <- unlist(hum_sequences)
 df_human_proteome$length <- unlist(hum_widths)
-
-#change 'name' to 'symbol' column name
-df_yeast_proteome <- df_yeast_proteome %>%
-  rename('name' = 'symbol')
-df_human_proteome <- df_human_proteome %>%
-  rename('name' = 'symbol')
-
+df_human_proteome$uniprot_id <- unlist(hum_gene_uniprot)
 
 # Write Data Frames
 write.table(x = df_yeast_proteome,
