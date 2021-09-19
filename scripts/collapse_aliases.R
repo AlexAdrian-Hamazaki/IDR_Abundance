@@ -24,6 +24,10 @@ l_names <- aliases %>%
 names(l_string_ids) <- unlist(l_names)
 
 get_correct_alias <- function(df_aliases, v_uniprot_aliases, v_string_aliases) {
+  # for a given string db code in the alises database, regex to see if the uniprot or string protein code aliases
+  # are affiliated with the string code.
+
+  #output a table that links the uniprot pc codes to string pc codes to a string db code
   output_list <- list(NA, NA, NA)
   names(output_list) <- c("string_id", "string_id_alias", "uniprot_alias")
 
