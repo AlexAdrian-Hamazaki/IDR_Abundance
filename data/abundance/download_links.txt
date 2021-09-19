@@ -1,3 +1,9 @@
-full uniprot2 paxdb: https://pax-db.org/download
 paxdb abundances human: https://pax-db.org/dataset/9606/29/
 paxdb abundances yeast: https://pax-db.org/dataset/4932/3/
+
+4932(yeast) protein mapping info donwloaded from
+# https://string-db.org/cgi/download?sessionId=%24input-%3E%7BsessionId%7D&species_text=Saccharomyces+cerevisiae
+
+9606(human) protein mapping info downloaded from
+https://string-db.org/cgi/download?sessionId=%24input-%3E%7BsessionId%7D&species_text=Homo+sapiens
+

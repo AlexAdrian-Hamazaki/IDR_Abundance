@@ -54,6 +54,12 @@ df_human_proteome$name <- unlist(hum_gene_names)
 df_human_proteome$seq <- unlist(hum_sequences)
 df_human_proteome$length <- unlist(hum_widths)
 
+#change 'name' to 'symbol' column name
+df_yeast_proteome <- df_yeast_proteome %>%
+  rename('name' = 'symbol')
+df_human_proteome <- df_human_proteome %>%
+  rename('name' = 'symbol')
+
 
 # Write Data Frames
 write.table(x = df_yeast_proteome,
