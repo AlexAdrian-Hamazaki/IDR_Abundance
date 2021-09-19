@@ -42,6 +42,7 @@ symbol <- lapply(symbol, function(x) str_extract(x, pattern = ".*(?=_)"))
 symbol <- lapply(symbol, function(x) return(x[2]))
 hum_with_symbol$symbol <- unlist(symbol)
 
+
 write.table(x = hum_with_symbol,
             file = "data/abundance/hum_with_symbol.tsv",
             sep = "\t",
