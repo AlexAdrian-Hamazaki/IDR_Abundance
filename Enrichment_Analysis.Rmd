@@ -1,0 +1,375 @@
+# Purpose
+
+This method performs enrichment analysis' on proteins that have been binned for abundance X disorder.
+
+What is being "Enriched" is the user's choice. Some examples are:
+
+1) Overexpression
+
+2) Haploinsufficiency
+
+3) Phase Separation
+
+4) Phase Separating Clients
+
+5) Phase Separating Drivers
+
+Enrichments are calculated using Fisher Exact Tests. The background for the tests are "Enrichment" in the Proteome.
+
+
+<br>
+<br>
+
+# Function Documentation
+
+
+All functions for this method can be found in:
+
+'scripts/enrichment_summary_functions.R"
+
+<br>
+<br>
+
+# Method Walkthrough
+
+
+To outline the method, we will be using the 5x5 binned yeast genome created in Bin_Genes.Rmd (see Bin_Genes.html).
+
+We will calculate the enrichment of Overexpression Phenotypes in the abundance X disorder bins
+
+
+
+<br>
+<br>
+
+
+## 1.Setup
+
+
+
+Run setup files and access functions
+```{r results = 'hide'}
+library(tidyverse)
+library(ggplot2)
+library(knitr)
+library(RColorBrewer)
+library(pheatmap)
+
+source('scripts/enrichment_summary_functions.R')
+```
+
+<br>
+<br>
+<br>
+
+
+## 2. Open 5x5 Abundance X Disorder Yeast Bins and Master Data Frame
+
+
+The abundance X disorder bins were generated in Bin_Genes.Rmd
+For a thorough understanding of the abundance X disorder bins, please see Bin_Genes.Rmd
+
+**binned_genes:**  : The abundance X disorder bins. A list of data frames where each data frame is an abundance X disorder bin.
+
+**master** :  **master**: Dataframe  containing yeast protein data
+
+
+```{r}
+binned_genes <- readRDS(file = 'data/Rmd_example_data/5x5_yeast_matrix.rds')
+master <- read.delim(file = 'data/merged_tables/yeast/actual_master.tsv', sep = "\t")
+
+print(paste('Size of Master Data Frame: ', nrow(master)))
+
+```
+
+<br>
+<br>
+<br>
+
+## 3. Define Global Parameters
+Identify the column name of what property you are assessing enrichment for.
+
+In our walkthrough example, we are calculating enrichment of **Haploinsuffient Genes**.
+<br>
+
+**enrichment_column:** The name of the column which contains the enrichment property of interest
+
+**alpha:** The alpha value for downstream Fisher Exact Tests
+
+**abundance_col** : The name of the column which contains abundance information
+
+**disorder_col** : The name of the column which contains disorder information
+
+**abundance_groups** :The number of abundance groups to split the proteome into. This must be the same number as you used to create binned_genes.
+
+**disorder_groups** : The number of disorder groups to split the proteome into. This must be the same number as you used to create binned_genes.
+
+
+```{r}
+enrichment_column <-  'HI'
+alpha <- 0.01
+disorder_col <-  'disopred3perc'
+abundance_col <-  'abundance'
+abundance_groups <-  5
+disorder_groups <-  5
+```
+<br>
+<br>
+<br>
+
+## 4. Preliminary Filtering of Yeast Proteome
+Perform some preliminary filtering of the yeast master data frame
+
+1) log2+1 transform abundance scores
+2) Remove proteins that lack abundance OR disorder scores
+
+```{r}
+master$abundance <- log2(master$abundance+1)
+
+master <- filter(master,
+                 !is.na(!!sym(abundance_col)) & !is.na(!!sym(disorder_col)))
+print(paste('Size of Master Data Frame: ', nrow(master)))
+
+```
+```{r echo = FALSE}
+kable(sample_n(master, size = 5))
+```
+
+
+<br>
+<br>
+<br>
+
+##  5. Calculate Enrichment of the Proteome
+As a background in our enrichment analysis within each bin, we will use the enrichment in the proteome.
+
+Using the entire proteome the following is identified:
+
+1) The number of proteins in the proteome.
+
+2) The number of 'enrichment' proteins in the proteome. In our example, we are counting the number of proteins in the proteome that are Haploinsufficient.
+
+3) The number of 'non-enrichment' proteins that are in the proteome. In our example, we are counting the number of proteins in the proteome that are not haploinsufficient.
+
+The information is saved in a 1x3 data frame. Convenient or the downstream Fisher Test
+<br>
+**proteome_enrichment:** Dataframe containing information about enrichment of a given property in the proteome
+
+```{r}
+proteome_enrichment <- summarize_enrichment(master, enrichment_column)
+```
+```{r echo = FALSE}
+kable(proteome_enrichment)
+```
+<br>
+<br>
+<br>
+
+##  6.Calculate the Enrichment in Abundance X Disorder Bins
+We need to count the number of enriched proteins in each of the abundance X disorder bins.
+
+In each bin the following is identified:
+
+1) The number of proteins in the bin.
+
+2) The number of 'enrichment' proteins that are in the bin. In our example, we are counting the number of proteins in the bin that are Haploinsufficient.
+
+3) The number of 'non-enrichment' proteins that are in the bin. In our example, we are counting the number of proteins in the bin that are not Haploinsufficient.
+<br>
+**enrichment_list:** List of dataframes. Each dataframe contains information about enrichment of a given property in an abundance X disorder bin.
+```{r}
+enrichment_list <- lapply(binned_genes, summarize_enrichment, enrichment_column)
+```
+<br>
+
+
+#### Looking at the enrichment_list
+enrichment_list is a list of data frames of the same length as binned_genes.
+
+In each of these data frames, the amount of proteins who display the named enrichment property in that bin has been counted
+
+
+```{r echo = FALSE}
+paste("The Length of enrichment_list:", length(enrichment_list))
+```
+
+<br>
+
+
+#### Example of Enrichment in Low Disorder Low Abundance Bin
+```{r echo = FALSE}
+kable(enrichment_list[1])
+```
+<br>
+
+
+
+#### Example of Enrichment in High Disorder High Abundance Bin
+```{r echo = FALSE}
+kable(enrichment_list[ length(enrichment_list) ])
+```
+
+<br>
+<br>
+
+## 7.Append the Proteome Enrichment to Each DataFrame in enrichment_list
+In preparation for the fisher exact test, append the proteome enrichment.
+```{r}
+enrichment_list <- lapply(enrichment_list, rbind, proteome_enrichment)
+```
+
+<br>
+
+### Example of Enrichment in Low Disorder Low Abundance Bin
+```{r echo = FALSE}
+kable(enrichment_list[1])
+```
+
+<br>
+
+### Example of Enrichment in High Disorder High Abundance Bin
+```{r echo = FALSE}
+kable(enrichment_list[ length(enrichment_list) ])
+```
+<br>
+<br>
+<br>
+
+## 8. Calculate Effect Size
+Prior to performing a Fisher Excact Test, it is usefull to calculate the effect size of each enrichment
+
+**Effect size in proteome is calculated by:**
+
+number of proteins displaying enriched property in the proteome / number of proteins in proteome
+
+**Effect size in a bin is calculated by:**
+
+number of proteins displaying enriched property in the bin / number of proteins in bin
+
+```{r}
+enrichment_list <- lapply(enrichment_list, get_effect_size)
+```
+<br>
+
+### Example of Enrichment in Low Disorder Low Abundance Bin
+```{r echo = FALSE}
+kable(enrichment_list[1])
+```
+
+<br>
+
+### Example of Enrichment in High Disorder High Abundance Bin
+```{r echo = FALSE}
+kable(enrichment_list[ length(enrichment_list) ])
+```
+
+
+<br>
+<br>
+<br>
+
+## 9. Perform Fisher Exact Test
+In each abundance bin, we perform a 2x2 Fisher Exact Test.
+
+Note: Non-relevant columns are automatically removed so that all data frames are 2x2
+
+**enrichment_p_values:** A List of P values. Each P value was generated by performing a fisher exact test in an abundance X disorder bin
+```{r}
+enrichment_p_values <- lapply(enrichment_list, get_p_value, alpha = alpha)
+kable(unlist(enrichment_p_values))
+```
+
+<br>
+<br>
+<br>
+
+# Visualization
+<br>
+<br>
+
+## Visualizing Effect Size
+To visualize effect size, you need to create a matrix of effect sizes
+
+```{r}
+
+effect_sizes <- unlist(lapply(enrichment_list, pull_effect_sizes))
+
+effect_size_matrix <- matrix(effect_sizes*100,
+                             nrow =  disorder_groups,
+                             ncol = abundance_groups)
+
+# Flips the matrix over its horizontal plane so that the highest disorder highest abundance bin is top right
+effect_size_matrix <- ((effect_size_matrix [ c(nrow(effect_size_matrix) : 1) , ]))
+
+kable(effect_size_matrix)
+```
+
+```{r}
+pheatmap(mat = effect_size_matrix,
+         main = paste0("Yeast: Percent Enrichment of Haploinsufficiency"),
+         cluster_cols = FALSE,
+         cluster_rows = FALSE,
+         color = brewer.pal(n = 9, name = 'Reds'),
+         legend = TRUE,
+         annotation_legend = TRUE,
+         legend_labels = c(5,1,3,3,6),
+         show_rownames = TRUE,
+         labels_col = 'Disorder Bins',
+         labels_row = 'Abundance Bins',
+         angle_col = 0,
+         angle_row = 90
+)
+```
+
+<br>
+<br>
+
+## Visualizing Significant Enrichments
+To visualize what p_values are significant you need to create a matrix of pvalues
+```{r}
+p_values_double <- unlist(enrichment_p_values)
+p_value_matrix <- matrix(p_values_double,
+                         ncol = abundance_groups,
+                         nrow = disorder_groups)
+
+# Flips the matrix over its horizontal plane so that the highest disorder highest abundance bin is top right
+p_value_matrix <- ((p_value_matrix[ c(nrow(p_value_matrix) : 1) , ]))
+kable(p_value_matrix)
+```
+
+Red bins indicate that enrichment is significant
+```{r}
+
+
+pheatmap(mat = p_value_matrix,
+         main = paste0("Yeast: Percent Enrichment of Haploinsufficiency - Significance"),
+         breaks = c(0, alpha, 1),
+         cluster_cols = FALSE,
+         cluster_rows = FALSE,
+         color = c('red4', 'grey'),
+         labels_col = 'Abundance Bins',
+         labels_row = 'Disorder Bins',
+         angle_col = 0,
+         angle_row = 90
+)
+
+```
+<br>
+<br>
+
+## Visualizing P Values
+
+```{r}
+
+pheatmap(mat = (p_value_matrix),
+         main = paste0("Yeast: Percent Enrichment of Haploinsufficiency - P Values"),
+         cluster_cols = FALSE,
+         cluster_rows = FALSE,
+         color = rev(brewer.pal(n = 9, name = 'Reds')),
+         labels_col = 'Abundance Bins',
+         labels_row = 'Disorder Bins',
+         angle_col = 0,
+         angle_row = 90
+)
+
+```

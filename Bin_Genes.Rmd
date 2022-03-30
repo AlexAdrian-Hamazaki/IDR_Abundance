@@ -1,0 +1,281 @@
+
+# Purpose
+This method takes a proteins with abundance and disorder scores, and places the proteins
+into bins according to those scores.
+
+It returns a list of data frames. Each one of those data frames corresponds to an "abundance X disorder bin".
+The data frames contain rows of Proteins. The proteins have been placed into their respective abundance X disorder bins
+based on their abundance and disorder data.
+
+<br><br>
+
+# Function Documentation
+All functions for this method can be found in:
+
+'scripts/binning_functions.R"
+
+<br><br>
+
+# Method Walkthrough
+
+To outline the method, we will be binning the yeast genome into a 5x5 matrix according to their abundance and disorder
+scores
+
+<br><br><br>
+
+## 1.Setup
+Run setup files and access functions
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(knitr)
+source('scripts/binning_functions.R')
+
+```
+
+<br><br><br>
+
+## 2. Open Yeast Protein Data
+
+Open a dataframe of yeast protein data.
+
+<br>
+
+**master**: Dataframe  containing yeast protein data
+
+<br>
+
+The columns that are relevant to this method are as follows:
+
+**uniprot_id** : The uniprot id of a protein (str)
+
+**disopred3perc** : The percent of a protein amino acid residues that are
+                        predicted to be disordered according to Disopred3 (float)
+
+**abundance** : The abundance of a protein according to Paxdb (float). See Methods for more info on data source
+
+**OE** : Value is 1 if the protein displays an overexpression phenotype,
+            otherwise the value is NA. These yeast genes were overexpressed with a viral promoter, they are the
+            Sapko yeast lines. See Methods for more info on data source
+
+**new_oe** : Value is 1 if the protein displays an overexpression phenotype,
+                otherwise the value is NA. These yeast genes were overexpressed with the endogenous promoter. They are the
+                Morrill yeast lines.
+
+```{r}
+master <- read.delim(file = 'data/merged_tables/yeast/actual_master.tsv',
+                     sep = "\t")
+
+print(paste('Size of Master Data Frame: ', nrow(master)))
+```
+```{r echo=FALSE}
+kable(sample_n(master, size = 5))
+```
+
+<br><br><br>
+
+## 3. Setting Global Parameters
+Identify how many stratifications of proteome you desire.
+
+<br>
+
+**For example:**
+
+You could choose to split the proteome into 4 abundance bins, and 4 disorder bins.
+Or you could choose to split the proteome into 5 abundance bins and 3 disorder bins.
+
+<br>
+
+**abundance_groups** :The number of abundance groups to split the proteome into
+
+**disorder_groups** : The number of disorder groups to split the proteome into
+
+**abundance_col** : The name of the column which contains abundance information
+
+**disorder_col** : The name of the column which contains disorder information
+
+
+
+
+
+```{r}
+abundance_groups <-  5
+disorder_groups <-  5
+disorder_col <-  'disopred3perc'
+abundance_col <-  'abundance'
+```
+<br><br><br>
+
+## 4. Preliminary Filtering
+Perform some preliminary filtering of the yeast master data frame
+
+1) log2+1 transform abundance scores
+2) Remove proteins that lack abundance OR disorder scores
+
+```{r}
+master$abundance <- log2(master$abundance+1)
+
+master <- filter(master,
+                 !is.na(!!sym(abundance_col)) & !is.na(!!sym(disorder_col)))
+print(paste('Size of Master Data Frame: ', nrow(master)))
+
+```
+```{r echo=FALSE}
+kable(sample_n(master, size = 5))
+```
+<br><br><br>
+
+## 5. Create Abundance and Disorder bins using create_bins()
+create_bins() is a wrapper function which returns a list of lists.
+Each list is an abundance X disorder bin.
+
+For full documentation, please see 'scripts/binning_functions.R"
+
+<br><br>
+
+The steps of how create_abundance works is broken down below...
+<br>
+
+<br><br>
+
+### 5.1.1 Identify bounds for the Abundance bin
+Given how many abundance bins we desire and the number of rows in master,
+get_bounds returns the indexes where we need to split the master data frame
+```{r}
+abundance_bounds <- get_bounds(master, group_col = abundance_col, group_size = abundance_groups)
+abundance_bounds
+```
+<br><br>
+
+### 5.1.2 Add Abundance Bin information
+add_bin_info() is a wrapper for several simple steps.
+
+<br>
+
+1) Order the master data frame proteins from highest to lowest using their disorder scores
+2) Split the master dataframe into several dataframes using the abundance_bounds index values
+3) For each split dataframe, add a new column called bounds_column which denotes what abundance bin a group of proteins
+   belongs to
+4) Merge all dataframes
+5) return the merge dataframe
+
+<br>
+
+The added column, "abundance_bin", denotes what abundance bin a protein is in. Higher values indicate that
+the protein is in a bin with higher abundance.
+```{r}
+master <- add_bin_info(master,
+                       bounds = abundance_bounds,
+                       bounds_column = abundance_col,
+                       newcolname = 'abundance_bin')
+kable(sample_n(master, size = 5))
+```
+<br><br>
+
+### 5.1.3 Perform steps 5.1.1 - 5.1.2 for Disorder
+
+The added column, "disorder_bin", denotes what disorder bin a protein is in. Higher values indicate that
+the protein is in a bin with higher disorder.
+
+```{r}
+disorder_bounds <- get_bounds(master, group_col = disorder_col, group_size = disorder_groups)
+disorder_bounds
+
+```
+
+```{r}
+master <- add_bin_info(master,
+                    bounds = disorder_bounds,
+                    bounds_column = disorder_col,
+                    newcolname = 'disorder_bin')
+kable(sample_n(master, size = 5))
+
+```
+<br><br>
+
+### 5.1.4 Create a List of empty DataFrames
+Create A List which contains disorder_groups * abundance_groups amounts of empty DataFrames.
+The empty DataFrames are where proteins will be placed in accordance with their disorder and abundance bins
+
+The empty DataFrames are named according to the following convention:
+(AbundanceBinNumber, DisorderBinNumber)
+
+<br>
+
+**For example:**
+
+A bin of the name (2,3) will be filled with proteins in the 2nd abundance bin, and the 3rd disorder bin.
+
+A bin of the name (5,3) will be filled with proteins in the 5th abundance bin, and 3rd disorder bin.
+
+<br>
+```{r}
+list_of_bins <- create_list(abundance_groups, disorder_groups)
+list_of_bins
+```
+<br><br>
+
+### 5.1.5 Place proteins into their propper bins
+All proteins contain information about their abundance and disorder bin.
+
+They are sorted into their respective lists in list_of_bins.
+
+Note: This function takes time...
+```{r}
+binned_genes <- place_rows_in_bins(master, list_of_bins, 'abundance_bin', 'disorder_bin')
+```
+<br><br><br>
+
+# Summary Statistics of Binned Genes
+With the formation of binned_genes, the proteome has now been split into the desired amount of
+abundance and disorder groups.
+
+This section seeks to give insight into these bins
+<br><br>
+
+## The Number of Genes in Each Disorder X Abundance bin
+```{r}
+bin_sizes <- lapply(binned_genes, nrow)
+bins <- names(bin_sizes)
+bin_sizes_df <- data.frame(bs = unlist(bin_sizes),
+                           name= bins)
+ggplot(bin_sizes_df) +
+        geom_col(mapping = aes(x = name, y = bs), fill ='steelblue') +
+        labs(title = 'Number of Genes in each Abundance X Disorder Bin') +
+        xlab('Abundance X Disorder Bin') +
+        ylab( 'Num Genes') +
+        theme_classic()
+```
+<br>
+
+### A look into the bin with the lowest abundance and lowest disorder
+
+Lets take a look at the proteins with the lowest abundance and disorder
+```{r}
+low_bin <- binned_genes[[1]]
+kable(sample_n(low_bin, size = 5))
+```
+<br>
+
+### A look into the bin with the highest abundance and highest disorder proteins
+
+Lets take a look at the proteins with the lowest abundance and disorder
+```{r}
+high_bin <- binned_genes[[disorder_groups * abundance_groups]]
+kable(sample_n(high_bin, size = 5))
+```
+<br>
+
+### A look into a bin with high abundance, low disorder proteins
+
+```{r}
+HA_LD <- binned_genes[[paste0(abundance_groups,",1")]]
+kable(sample_n(HA_LD, size = 5))
+```
+<br>
+
+### A look into a bin with low abundance, high disorder proteins
+```{r}
+LA_HD <- binned_genes[[paste0("1,",disorder_groups)]]
+kable(sample_n(LA_HD, size = 5))
+```

@@ -1,0 +1,17 @@
+First you have to generate HI information by running bin_by_HI.R
+Second you have to generate disorder bins by running bin_by_sidorder.R
+
+Third, you have to run bin_by_abun. This will actually write the files for each of your disordered metrics
+
+One you have run abundance, ou can move on to analysis scripts
+
+
+~~~For investigating Different Binning~~~
+We will be adjusting the bins to make sure we didn't pick an arbitrary bin
+To do so, do the following
+
+Alter the bin_percent in bin_by_disorder.R
+Run bin_by_disorder.R: This will generate a new human_disorder_bins.tsv
+Alter the bin_percent in bin_by_abun.R if you want to change the abundance bins
+Run bin_by_abun.R: This wll generate new disopred%bins and iupred%bins, given our new disopred bins
+Now you can run the analysis comparisons

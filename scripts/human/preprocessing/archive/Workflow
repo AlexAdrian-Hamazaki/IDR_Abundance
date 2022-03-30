@@ -1,0 +1,13 @@
+To do our preprocessing...
+
+We need to merge:
+    Abundance string ids
+    disorder uniprot ids
+    Oncogene ensemble ids
+
+I will create a linker that takes all of our stringIds, and makes can translate them to uniprotIds
+
+I will do so by using
+https://www.uniprot.org/uniprot/?query=yourlist:M20211025A084FC58F6BBA219896F365D15F2EB4424D8E87&sort=yourlist:M20211025A084FC58F6BBA219896F365D15F2EB4424D8E87&columns=yourlist(M20211025A084FC58F6BBA219896F365D15F2EB4424D8E87),id,entry%20name,reviewed,protein%20names,genes,organism,length
+
+I will save the results in alias_map.txt

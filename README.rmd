@@ -1,0 +1,17 @@
+
+# The Relationships Between Disorder, Abundance, Haploinsufficiency, and Phase Separation
+
+### Project Information
+
+This thesis was written by Alex Adrian-Hamazaki under the supervision of Dr. Jorg Gsponer and Dr. Erich Kueler.
+It was completed on April 8th, 2022
+
+### Informative Markdown Files
+
+Markdown files which walk a user on the code is available in the Markdown_Files directory.
+
+### Data Accessability
+The sources of the data utilized in this project can be found under the Methods section of the thesis.
+
+
+

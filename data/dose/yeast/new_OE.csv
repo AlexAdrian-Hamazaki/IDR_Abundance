@@ -1,0 +1,86 @@
+Origonal_name	uniprot_id	stringID	Status	Protein names	Gene names
+YBR236C	P32783	MCES_YEAST	reviewed	mRNA cap guanine-N7 methyltransferase (EC 2.1.1.56) (mRNA (guanine-N(7))-methyltransferase) (mRNA cap methyltransferase)	ABD1 YBR236C YBR1602
+YFL039C	P60010	ACT_YEAST	reviewed	Actin	ACT1 ABY1 END7 YFL039C
+YIL142W	P39076	TCPB_YEAST	reviewed	T-complex protein 1 subunit beta (TCP-1-beta) (CCT-beta)	CCT2 BIN3 TCP2 YIL142W
+YDL143W	P39078	TCPD_YEAST	reviewed	T-complex protein 1 subunit delta (TCP-1-delta) (CCT-delta)	CCT4 ANC2 TCP4 YDL143W
+YJR064W	P40413	TCPE_YEAST	reviewed	T-complex protein 1 subunit epsilon (TCP-1-epsilon) (CCT-epsilon)	CCT5 TCP5 YJR064W J1752
+YJL111W	P42943	TCPH_YEAST	reviewed	T-complex protein 1 subunit eta (TCP-1-eta) (CCT-eta)	CCT7 YJL111W J0804
+YBR202W	P38132	MCM7_YEAST	reviewed	DNA replication licensing factor MCM7 (EC 3.6.4.12) (Cell division control protein 47) (Minichromosome maintenance protein 7)	MCM7 CDC47 YBR202W YBR1441
+YOL021C	Q08162	RRP44_YEAST	reviewed	Exosome complex exonuclease DIS3 (EC 3.1.13.-) (EC 3.1.26.-) (Chromosome disjunction protein 3) (Ribosomal RNA-processing protein 44)	DIS3 RRP44 YOL021C O2197
+YER133W	P32598	PP12_YEAST	reviewed	Serine/threonine-protein phosphatase PP1-2 (EC 3.1.3.16)	GLC7 CID1 DIS2 YER133W
+YNL075W	P53941	IMP4_YEAST	reviewed	U3 small nucleolar ribonucleoprotein protein IMP4 (U3 snoRNP protein IMP4) (Interacting with MPP10 protein 4)	IMP4 YNL075W N2353
+YPL169C	Q99257	MEX67_YEAST	reviewed	mRNA export factor MEX67	MEX67 YPL169C P2520
+YFR002W	P34077	NIC96_YEAST	reviewed	Nucleoporin NIC96 (96 kDa nucleoporin-interacting component) (Nuclear pore protein NIC96)	NIC96 YFR002W
+YMR309C	P32497	EIF3C_YEAST	reviewed	Eukaryotic translation initiation factor 3 subunit C (eIF3c) (Eukaryotic translation initiation factor 3 93 kDa subunit) (eIF3 p93) (Nuclear transport protein NIP1) (Translation initiation factor eIF3, p93 subunit)	NIP1 YMR309C YM9924.01C YM9952.11C
+YHR170W	P38861	NMD3_YEAST	reviewed	60S ribosomal export protein NMD3 (Nonsense-mediated mRNA decay protein 3)	NMD3 YHR170W
+YNL061W	P40991	NOP2_YEAST	reviewed	25S rRNA (cytosine(2870)-C(5))-methyltransferase (EC 2.1.1.310) (Nucleolar protein 2)	NOP2 YNA1 YNL061W N2428 YNL2428W
+YKL057C	P35729	NU120_YEAST	reviewed	Nucleoporin NUP120 (Nuclear pore protein NUP120)	NUP120 RAT2 YKL057C YKL313 YKL314
+YDL043C	Q07350	PRP11_YEAST	reviewed	Pre-mRNA-splicing factor PRP11	PRP11 PRP10 RNA11 YDL043C D2711
+YJL140W	P20433	RPB4_YEAST	reviewed	DNA-directed RNA polymerase II subunit RPB4 (RNA polymerase II subunit B4) (B32) (DNA-directed RNA polymerase II 32 kDa polypeptide)	RPB4 YJL140W J0654
+YDR404C	P34087	RPB7_YEAST	reviewed	DNA-directed RNA polymerase II subunit RPB7 (RNA polymerase II subunit B7) (B16)	RPB7 YDR404C D9509.22
+YHR143W-A	P40422	RPAB4_YEAST	reviewed	DNA-directed RNA polymerases I, II, and III subunit RPABC4 (RNA polymerases I, II, and III subunit ABC4) (ABC10-alpha)	RPC10 RPB12 YHR143W-A YHR143BW
+YEL054C	P0CX53	RL12A_YEAST	reviewed	60S ribosomal protein L12-A (L15) (Large ribosomal subunit protein uL11-A) (YL23)	RPL12A RPL15B YEL054C
+YDR418W	P0CX54	RL12B_YEAST	reviewed	60S ribosomal protein L12-B (L15) (Large ribosomal subunit protein uL11-B) (YL23)	RPL12B RPL15A YDR418W D9461.7
+YKL180W	P05740	RL17A_YEAST	reviewed	60S ribosomal protein L17-A (L20A) (Large ribosomal subunit protein uL22-A) (YL17)	RPL17A RPL17 RPL20A YKL180W
+YOL120C	P0CX49	RL18A_YEAST	reviewed	60S ribosomal protein L18-A (Large ribosomal subunit protein eL18-A) (RP28)	RPL18A RP28A YOL120C
+YBR084C-A	P0CX82	RL19A_YEAST	reviewed	60S ribosomal protein L19-A (L23) (Large ribosomal subunit protein eL19-A) (RP15L) (RP33) (YL14)	RPL19A RPL23A YL14A YBR084C-A YBR084BC
+YBL027W	P0CX83	RL19B_YEAST	reviewed	60S ribosomal protein L19-B (L23) (Large ribosomal subunit protein eL19) (RP15L) (RP33) (YL14)	RPL19B RPL23B YL14B YBL027W YBL0424
+YER117W	P0CX42	RL23B_YEAST	reviewed	60S ribosomal protein L23-B (L17a) (Large ribosomal subunit protein uL14-B) (YL32)	RPL23B RPL17AB RPL17B YER117W
+YGL031C	P04449	RL24A_YEAST	reviewed	60S ribosomal protein L24-A (L30) (Large ribosomal subunit protein eL24-A) (RP29) (YL21)	RPL24A RP29 RPL30A YGL031C
+YGR148C	P24000	RL24B_YEAST	reviewed	60S ribosomal protein L24-B (L30) (Large ribosomal subunit protein eL24-B) (RP29) (YL21)	RPL24B RPL30B YGR148C G6635
+YGR034W	P53221	RL26B_YEAST	reviewed	60S ribosomal protein L26-B (L33) (Large ribosomal subunit protein uL24-B) (YL33)	RPL26B RPL33B YGR034W
+YHR010W	P0C2H6	RL27A_YEAST	reviewed	60S ribosomal protein L27-A (Large ribosomal subunit protein eL27-A)	RPL27A RPL27 YHR010W
+YGL030W	P14120	RL30_YEAST	reviewed	60S ribosomal protein L30 (L32) (Large ribosomal subunit protein eL30) (RP73) (YL38)	RPL30 RPL32 YGL030W
+YDL075W	P0C2H8	RL31A_YEAST	reviewed	60S ribosomal protein L31-A (L34) (Large ribosomal subunit protein eL31-A) (YL28)	RPL31A RPL34 RPL34A YDL075W D2478
+YPL143W	P05744	RL33A_YEAST	reviewed	60S ribosomal protein L33-A (L37) (Large ribosomal subunit protein eL33-A) (RP47) (YL37)	RPL33A RPL37A YPL143W LPI4W P2625
+YER056C-A	P87262	RL34A_YEAST	reviewed	60S ribosomal protein L34-A (Large ribosomal subunit protein eL34-A)	RPL34A YER056C-A YER056BC
+YIL052C	P40525	RL34B_YEAST	reviewed	60S ribosomal protein L34-B (Large ribosomal subunit protein eL34-B)	RPL34B YIL052C
+YDL191W	P0CX84	RL35A_YEAST	reviewed	60S ribosomal protein L35-A (Large ribosomal subunit protein uL29-A)	RPL35A SOS1 YDL191W D1249
+YDL136W	P0CX85	RL35B_YEAST	reviewed	60S ribosomal protein L35-B (Large ribosomal subunit protein uL29-B)	RPL35B SOS2 YDL136W D2170
+YLR185W	P49166	RL37A_YEAST	reviewed	60S ribosomal protein L37-A (L43) (Large ribosomal subunit protein eL37-A) (YL35) (YP55)	RPL37A RPL35A YLR185W L9470.6
+YKR094C	P0CH09	RL40B_YEAST	reviewed	Ubiquitin-60S ribosomal protein L40 [Cleaved into: Ubiquitin; 60S ribosomal protein L40-B (CEP52) (Large ribosomal subunit protein eL40-B)]	RPL40B UBI2 YKR094C
+YPR043W	P0CX25	RL43A_YEAST	reviewed	60S ribosomal protein L43-A (L37a) (Large ribosomal subunit protein eL43-A) (YL35)	RPL43A YPR043W YP9499.02
+YML073C	Q02326	RL6A_YEAST	reviewed	60S ribosomal protein L6-A (L17) (Large ribosomal subunit protein eL6-A) (RP18) (YL16)	RPL6A RPL17A YL16A YML073C
+YLR448W	P05739	RL6B_YEAST	reviewed	60S ribosomal protein L6-B (L17) (Large ribosomal subunit protein eL6-B) (RP18) (YL16)	RPL6B RPL16B RPL17B YL16B YLR448W L9324.4
+YFR004W	P43588	RPN11_YEAST	reviewed	Ubiquitin carboxyl-terminal hydrolase RPN11 (EC 3.4.19.12) (26S proteasome regulatory subunit RPN11) (Protein MPR1)	RPN11 MPR1 YFR004W
+YPR187W	P20435	RPAB2_YEAST	reviewed	DNA-directed RNA polymerases I, II, and III subunit RPABC2 (RNA polymerases I, II, and III subunit ABC2) (ABC23) (DNA-directed RNA polymerases I, II, and III 23 kDa polypeptide)	RPO26 RPB6 YPR187W P9677.8
+YDR382W	P02400	RLA4_YEAST	reviewed	60S acidic ribosomal protein P2-beta (L12eIA) (L45) (Large ribosomal subunit protein P2-B) (P2B) (YL44C) (YP2beta) (YPA1)	RPP2B L12EIA RPL45 RPLA4 YDR382W
+YOR293W	Q08745	RS10A_YEAST	reviewed	40S ribosomal protein S10-A (Small ribosomal subunit protein eS10-A)	RPS10A YOR293W
+YDR025W	P0CX47	RS11A_YEAST	reviewed	40S ribosomal protein S11-A (RP41) (S18) (Small ribosomal subunit protein uS17-A) (YS12)	RPS11A RPS18A YDR025W YD9813.03
+YBR048W	P0CX48	RS11B_YEAST	reviewed	40S ribosomal protein S11-B (RP41) (S18) (Small ribosomal subunit protein uS17-B) (YS12)	RPS11B RPS18B YBR048W YBR0501
+YDR064W	P05756	RS13_YEAST	reviewed	40S ribosomal protein S13 (S27a) (Small ribosomal subunit protein uS15) (YS15)	RPS13 RPS13C YDR064W D4252 YD9609.18
+YOL040C	Q01855	RS15_YEAST	reviewed	40S ribosomal protein S15 (RIG protein) (RP52) (S21) (Small ribosomal subunit protein uS19) (YS21)	RPS15 RPS21 YOL040C
+YML063W	P23248	RS3A2_YEAST	reviewed	40S ribosomal protein S1-B (RP10B) (Small ribosomal subunit protein eS1-B)	RPS1B PLC2 RPS10B YML063W
+YHL015W	P38701	RS20_YEAST	reviewed	40S ribosomal protein S20 (Small ribosomal subunit protein uS10)	RPS20 URP2 YHL015W
+YJL136C	Q3E754	RS21B_YEAST	reviewed	40S ribosomal protein S21-B (S26) (Small ribosomal subunit protein eS21-B) (YS25)	RPS21B RPS25B RPS26B YJL136C J0664
+YGR118W	P0CX29	RS23A_YEAST	reviewed	40S ribosomal protein S23-A (RP37) (S28) (Small ribosomal subunit protein uS12-A) (YS14)	RPS23A RPS28A YGR118W G6178
+YER074W	P0CX31	RS24A_YEAST	reviewed	40S ribosomal protein S24-A (RP50) (Small ribosomal subunit protein eS24-A)	RPS24A RPS24EA YER074W
+YHR021C	P38711	RS27B_YEAST	reviewed	40S ribosomal protein S27-B (RP61) (Small ribosomal subunit protein eS27-B) (YS20)	RPS27B YHR021C
+YNL178W	P05750	RS3_YEAST	reviewed	40S ribosomal protein S3 (RP13) (Small ribosomal subunit protein uS3) (YS3)	RPS3 SUF14 YNL178W N1653
+YLR287C-A	P0CX33	RS30A_YEAST	reviewed	40S ribosomal protein S30-A (Small ribosomal subunit protein eS30-A)	RPS30A YLR287C-A L8003.23 YLR287BC
+YLR167W	P05759	RS31_YEAST	reviewed	Ubiquitin-40S ribosomal protein S31 [Cleaved into: Ubiquitin; 40S ribosomal protein S31 (CEP76) (S37) (Small ribosomal subunit protein eS31) (YS24)]	RPS31 RPS37 UBI3 YLR167W L9470.14
+YJR145C	P0CX35	RS4A_YEAST	reviewed	40S ribosomal protein S4-A (RP5) (S7) (Small ribosomal subunit protein eS4-A) (YS6)	RPS4A RPS7B YJR145C J2186
+YJR123W	P26783	RS5_YEAST	reviewed	40S ribosomal protein S5 (RP14) (S2) (Small ribosomal subunit protein uS7) (YS8)	RPS5 RPS2 YJR123W J2045
+YPL090C	P0CX37	RS6A_YEAST	reviewed	40S ribosomal protein S6-A (RP9) (S10) (Small ribosomal subunit protein eS6-A) (YS4)	RPS6A RPS101 RPS10B YPL090C LPG18C
+YOR096W	P26786	RS7A_YEAST	reviewed	40S ribosomal protein S7-A (RP30) (RP40) (Small ribosomal subunit protein eS7-A)	RPS7A RPS30 YOR096W YOR3177W
+YHR069C	P38792	RRP4_YEAST	reviewed	Exosome complex component RRP4 (Ribosomal RNA-processing protein 4)	RRP4 YHR069C
+YCR035C	P25359	RRP43_YEAST	reviewed	Exosome complex component RRP43 (Ribosomal RNA-processing protein 43)	RRP43 YCR035C YCR35C YCR522
+YPR137W	Q06506	RRP9_YEAST	reviewed	Ribosomal RNA-processing protein 9	RRP9 YPR137W
+YPL235W	Q12464	RUVB2_YEAST	reviewed	RuvB-like protein 2 (RUVBL2) (EC 3.6.4.12) (TIP49-homology protein 2) (TIP49b homolog)	RVB2 TIH2 TIP49B YPL235W P1060
+YLR197W	Q12460	NOP56_YEAST	reviewed	Nucleolar protein 56 (Ribosome biosynthesis protein SIK1) (Suppressor of I kappa b protein 1)	NOP56 SIK1 YLR197W L8167.9
+YNL126W	P53540	SPC98_YEAST	reviewed	Spindle pole body component SPC98	SPC98 YNL126W N1222 N1879
+YJR007W	P20459	IF2A_YEAST	reviewed	Eukaryotic translation initiation factor 2 subunit alpha (eIF-2-alpha)	SUI2 TIF211 YJR007W J1429
+YPL237W	P09064	IF2B_YEAST	reviewed	Eukaryotic translation initiation factor 2 subunit beta (eIF-2-beta)	SUI3 TIF212 YPL237W
+YDR145W	Q03761	TAF12_YEAST	reviewed	Transcription initiation factor TFIID subunit 12 (TAFII-61) (TAFII61) (TAFII-68) (TAFII68) (TBP-associated factor 12) (TBP-associated factor 61 kDa)	TAF12 TAF61 TAF68 YDR145W YD8358.02
+YBR198C	P38129	TAF5_YEAST	reviewed	Transcription initiation factor TFIID subunit 5 (TAFII-90) (TBP-associated factor 5) (TBP-associated factor 90 kDa)	TAF5 TAF90 YBR198C YBR1410
+YML085C	P09733	TBA1_YEAST	reviewed	Tubulin alpha-1 chain	TUB1 YML085C
+YEL035C	P32630	UTR5_YEAST	reviewed	Protein UTR5 (Unknown transcript 5 protein)	UTR5 YEL035C SYGP-ORF27
+YDR449C	Q02354	UTP6_YEAST	reviewed	U3 small nucleolar RNA-associated protein 6 (U3 snoRNA-associated protein 6) (U three protein 6)	UTP6 YDR449C D9461.34
+YLR249W	P16521	EF3A_YEAST	reviewed	Elongation factor 3A (EF-3) (EF-3A) (EC 3.6.4.-) (Eukaryotic elongation factor 3) (eEF3) (Translation elongation factor 3A) (Yeast elongation factor 3)	YEF3 EFC1 TEF3 YEF3A YLR249W L9672.5
+YLR009W	Q07915	RLP24_YEAST	reviewed	Ribosome biogenesis protein RLP24 (Ribosomal protein L24-like)	RLP24 YLR009W
+YML093W	Q04500	UTP14_YEAST	reviewed	U3 small nucleolar RNA-associated protein 14 (U3 snoRNA-associated protein 14) (U three protein 14)	UTP14 YML093W
+YMR093W	Q04305	UTP15_YEAST	reviewed	U3 small nucleolar RNA-associated protein 15 (U3 snoRNA-associated protein 15) (U three protein 15) (U3 protein 15 required for transcription) (t-UTP15)	UTP15 YMR093W YM9582.18
+YNL110C	P53927	NOP15_YEAST	reviewed	Ribosome biogenesis protein 15 (Nucleolar protein 15)	NOP15 YNL110C N1954
+YPL146C	Q12080	NOP53_YEAST	reviewed	Ribosome biogenesis protein NOP53 (Nucleolar protein 53)	NOP53 YPL146C LPI2C P2610
+YPR133C	Q06505	IWS1_YEAST	reviewed	Transcription factor SPN1 (Interacts with SPT6 protein 1) (Suppresses postrecruitment functions protein 1)	SPN1 IWS1 YPR133C
+YMR242C	P0CX23	RL20A_YEAST

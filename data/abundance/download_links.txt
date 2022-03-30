@@ -11,3 +11,5 @@ https://string-db.org/cgi/download?sessionId=%24input-%3E%7BsessionId%7D&species
 Alises
 https://string-db.org/cgi/download?sessionId=%24input-%3E%7BsessionId%7D&species_text=Homo+sapiens
 
+dose information
+https://search.clinicalgenome.org/kb/gene-dosage?page=1&size=25&search=
