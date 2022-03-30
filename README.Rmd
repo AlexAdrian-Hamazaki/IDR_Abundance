@@ -8,7 +8,12 @@ It was completed on April 8th, 2022
 
 ### Informative Markdown Files
 
-Markdown files which walk a user on the code is available in the Markdown_Files directory.
+2 Markdown files which walk a user on the code is available:
+
+<br>
+
+**Bin_Genes.html**  outlines the method on binning the proteome by abundance and disorder
+**Enrichment_Analysis.html** outlines the method on performing the enrichment analysis
 
 ### Data Accessability
 The sources of the data utilized in this project can be found under the Methods section of the thesis.
