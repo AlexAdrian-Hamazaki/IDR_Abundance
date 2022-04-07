@@ -113,12 +113,12 @@ dev.off()
 
 p_values_double <- unlist(enrichment_p_values)
 p_value_matrix <- matrix(p_values_double, ncol = abundance_groups, nrow = disorder_groups)
-p_value_matrix <- log2(p_value_matrix)
 
 # Flips the matrix over its horizontal plane so that the highest disorder highest abundance bin is top right
 p_value_matrix <- ((p_value_matrix[ c(nrow(p_value_matrix) : 1) , ]))
 
 ### Visualize
+stopifnot(FALSE)
 
 png(filename = 'figures/yeast/OP/5x5newOE_p.png', width = 2000, height = 850, res = 300)
 
@@ -146,3 +146,29 @@ pheatmap(mat = p_value_matrix,
 )
 
 dev.off()
+
+png(filename = 'figures/yeast/OP/5x5oldOE_p.png', width = 1400, height = 850, res = 300)
+
+color <- brewer.pal(n = 5, name = 'Reds')
+color <- rev(append(color, 'black'))
+pheatmap(mat = p_value_matrix,
+         main = paste0("Yeast: Sapko OP Enrichment P Values"),
+         cluster_cols = FALSE,
+         cluster_rows = FALSE,
+         color = color,
+         labels_row = '         ',
+         angle_col = 0,
+         angle_row = 90,
+         breaks = c(0, alpha, 0.1, 0.25, 0.5, 0.75, 1),
+)
+
+
+
+
+
+dev.off()
+
+ff <- format(p_value_matrix, scientific = TRUE, trim = TRUE, digits = 3)
+
+
+write.csv(ff, file = 'figures/test/p_value_matrix.csv')

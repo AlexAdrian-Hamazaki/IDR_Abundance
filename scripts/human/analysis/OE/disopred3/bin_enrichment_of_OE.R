@@ -7,6 +7,8 @@ library(tidyr)
 library(dplyr)
 library(ggplot2)
 library(pheatmap)
+library(RColorBrewer)
+library(googlesheets4)
 
 
 source('scripts/binning_functions.R')
@@ -119,14 +121,24 @@ p_value_matrix <- matrix(p_values_double, ncol = abundance_groups, nrow = disord
 p_value_matrix <- ((p_value_matrix[ c(nrow(p_value_matrix) : 1) , ]))
 
 ### Visualize
+png(filename = 'figures/human/OP/5x5onco_p.png', width = 1400, height = 850, res = 300)
 
+color <- brewer.pal(n = 5, name = 'Reds')
+color <- rev(append(color, 'black'))
 pheatmap(mat = p_value_matrix,
-         main = paste0("Abundance:",abundance_groups, " x ", "Disorder:",disorder_groups, " Pvalue heatmap for enrichment of OE"),
-         breaks = c(0, alpha, 1),
+         main = paste0("Human: Oncogene Enrichment P Values"),
          cluster_cols = FALSE,
          cluster_rows = FALSE,
-         color = c('red4', 'grey'),
-         labels_row = '                 ',
+         color = color,
+         labels_row = '         ',
          angle_col = 0,
-         angle_row = 90
+         angle_row = 90,
+         breaks = c(0, alpha, 0.1, 0.25, 0.5, 0.75, 1),
 )
+
+dev.off()
+
+ff <- format(p_value_matrix, scientific = TRUE, trim = TRUE, digits = 3)
+
+
+write.csv(ff, file = 'figures/test/p_value_matrix.csv')

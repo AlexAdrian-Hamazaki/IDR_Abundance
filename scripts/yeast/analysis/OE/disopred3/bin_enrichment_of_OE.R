@@ -22,7 +22,7 @@ disorder_col <-  'disopred3perc'
 abundance_col <-  'abundance'
 enrichment_column <-  'new_oe'
 abundance_groups <-  5
-disorder_groups <-  3
+disorder_groups <-  5
 alpha = 0.01
 
 
@@ -147,3 +147,25 @@ dev.off()
 # )
 
 
+png(filename = 'figures/yeast/OP/5x5newOE_p.png', width = 1400, height = 850, res = 300)
+
+color <- brewer.pal(n = 5, name = 'Reds')
+color <- rev(append(color, 'black'))
+pheatmap(mat = p_value_matrix,
+         main = paste0("Yeast: Morrill OP Enrichment P Values"),
+         cluster_cols = FALSE,
+         cluster_rows = FALSE,
+         color = color,
+         labels_row = '         ',
+         angle_col = 0,
+         angle_row = 90,
+         breaks = c(0, alpha, 0.1, 0.25, 0.5, 0.75, 1),
+)
+
+
+dev.off()
+
+ff <- format(p_value_matrix, scientific = TRUE, trim = TRUE, digits = 3)
+
+
+write.csv(ff, file = 'figures/test/p_value_matrix.csv')

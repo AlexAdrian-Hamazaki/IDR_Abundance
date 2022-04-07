@@ -5,7 +5,7 @@
 
 library(tidyr)
 library(dplyr)
-library(ggplot2)
+library(ggplot2
 library(pheatmap)
 library(RColorBrewer)
 
@@ -111,19 +111,42 @@ p_value_matrix <- matrix(p_values_double, ncol = abundance_groups, nrow = disord
 p_value_matrix <- ((p_value_matrix[ c(nrow(p_value_matrix) : 1) , ]))
 
 ### Visualize
+stopifnot(FALSE)
 png(filename = 'figures/human/HI/5x5HI_p.png', width = 2000, height = 950, res = 300)
 
 
 
-pheatmap(mat = p_value_matrix,
-         main = paste0("Human: Percent Enrichment of Haploinsufficiency P Values"),
-         breaks = c(0, alpha, 1),
+pheatmap(mat = (p_value_matrix),
+         main = paste0("Human: Haploinsufficiency P Values"),
          cluster_cols = FALSE,
          cluster_rows = FALSE,
-         color = c('red4', 'grey'),
+         color = rev(brewer.pal(n = 9, name = 'Reds')),
          labels_col = 'Abundance Bins',
          labels_row = 'Disorder Bins',
          angle_col = 0,
          angle_row = 90
 )
+
 dev.off()
+
+png(filename = 'figures/human/HI/5x5HI_p.png', width = 1400, height = 850, res = 300)
+
+color <- brewer.pal(n = 5, name = 'Reds')
+color <- rev(append(color, 'black'))
+pheatmap(mat = p_value_matrix,
+         main = paste0("Human: HI Enrichment P Values"),
+         cluster_cols = FALSE,
+         cluster_rows = FALSE,
+         color = color,
+         labels_row = '         ',
+         angle_col = 0,
+         angle_row = 90,
+         breaks = c(0, alpha, 0.1, 0.25, 0.5, 0.75, 1),
+)
+
+dev.off()
+
+ff <- format(p_value_matrix, scientific = TRUE, trim = TRUE, digits = 3)
+
+
+write.csv(ff, file = 'figures/test/p_value_matrix.csv')

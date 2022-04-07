@@ -18,6 +18,8 @@ master <- read.delim(file = "data/merged_tables/human/actual_master.tsv")
 master$abundance <- log2(master$abundance+1)
 
 
+
+
 ### 1) Bin out Genes for Disorder and Abundance
 
 #~~~~~~~~~ Global Parameters ~~~~~~~~~~~~
@@ -29,6 +31,8 @@ abundance_groups <-  5
 disorder_groups <-  5
 alpha = 0.01
 
+master <- filter(master,
+                 !is.na(!!sym(abundance_col)) & !is.na(!!sym(disorder_col)))
 
 # Create bins
 binned_genes <- create_bins(master,
@@ -74,10 +78,12 @@ effect_size_matrix <- ((effect_size_matrix [ c(nrow(effect_size_matrix) : 1) , ]
 
 ### Visualize the effect size
 stopifnot(FALSE)
-png(filename = 'figures/human/PS/5x5PS_driver.png', width = 2000, height = 850, res = 300)
+png(filename = 'figures/human/PS/5x5PS_driver.png', width = 1150, height = 850, res = 300)
 
 a <- pheatmap(mat = effect_size_matrix,
          main = paste0("Human: Percent Enrichment of Phase Separation Drivers"),
+                            fontsize = 6,
+
          cluster_cols = FALSE,
          cluster_rows = FALSE,
          color = brewer.pal(n = 9, name = 'Reds'),
@@ -121,3 +127,26 @@ b <- pheatmap(mat = p_value_matrix,
 )
 print(b)
 dev.off()
+
+### Visualize
+png(filename = 'figures/human/PS/5x5PS_drivers_p.png', width = 1400, height = 850, res = 300)
+
+color <- brewer.pal(n = 5, name = 'Reds')
+color <- rev(append(color, 'black'))
+pheatmap(mat = p_value_matrix,
+         main = paste0("Human: Phase Separating Driver P Values"),
+         cluster_cols = FALSE,
+         cluster_rows = FALSE,
+         color = color,
+         labels_row = '         ',
+         angle_col = 0,
+         angle_row = 90,
+         breaks = c(0, alpha, 0.1, 0.25, 0.5, 0.75, 1),
+)
+
+dev.off()
+
+ff <- format(p_value_matrix, scientific = TRUE, trim = TRUE, digits = 3)
+
+
+write.csv(ff, file = 'figures/test/p_value_matrix.csv')

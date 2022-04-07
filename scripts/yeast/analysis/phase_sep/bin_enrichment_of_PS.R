@@ -89,10 +89,12 @@ effect_size_matrix <- ((effect_size_matrix [ c(nrow(effect_size_matrix) : 1) , ]
 ### Visualize the effect size
 stopifnot(FALSE)
 
-png(filename = 'figures/yeast/PS/5x5PS_clients.png', width = 2000, height = 850, res = 300)
+png(filename = 'figures/yeast/PS/5x5PS_clients.png', width = 1150, height = 850, res = 300)
 
 pheatmap(mat = effect_size_matrix,
          main = paste0("Yeast: Percent Enrichment of Phase Separation Clients"),
+                                     fontsize = 6,
+
          cluster_cols = FALSE,
          cluster_rows = FALSE,
          color = brewer.pal(n = 9, name = 'Reds'),
@@ -133,3 +135,27 @@ pheatmap(mat = p_value_matrix,
 )
 
 dev.off()
+
+
+### Visualize
+png(filename = 'figures/yeast/PS/5x5PS_clients_p.png', width = 1400, height = 850, res = 300)
+
+color <- brewer.pal(n = 5, name = 'Reds')
+color <- rev(append(color, 'black'))
+pheatmap(mat = p_value_matrix,
+         main = paste0("Yeast: Phase Separating Clients P Values"),
+         cluster_cols = FALSE,
+         cluster_rows = FALSE,
+         color = color,
+         labels_row = '         ',
+         angle_col = 0,
+         angle_row = 90,
+         breaks = c(0, alpha, 0.1, 0.25, 0.5, 0.75, 1),
+)
+
+dev.off()
+
+ff <- format(p_value_matrix, scientific = TRUE, trim = TRUE, digits = 3)
+
+
+write.csv(ff, file = 'figures/test/p_value_matrix.csv')

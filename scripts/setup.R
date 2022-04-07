@@ -8,6 +8,8 @@ install.packages('hash')
 install.packages('pheatmap')
 install.packages('dunn.test')
 install.packages('rmarkdown')
+install.packages("googlesheets4")
+
 
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
